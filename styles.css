@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template: 1fr 5fr 1fr / 1fr 1fr 1fr;
+}
+
+
+/*HEADER HEADER HEADER HEADER HEADER*/
+
+
+.header{
+    grid-area: 1 / 1 / 1 / 4;
+    text-align: center;
+}
+.header>h1{
+    font-size: 48px;
+    font-weight: 500;
+}
+
+
+/* CONTENT CONTENT CONTENT CONTENT*/
+
+
+.content{
+    grid-area: 2 / 1 / 2 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.newBook{
+    height: 32px;
+    padding: 5px 20px;
+    border-radius: 25px;
+}
+.newBookDiv{
+    height: 20%;
+}
+.books{
+    height: 80%;
+}
+
+
+/*FOOTER FOOTER FOOTER FOOTER FOOTER*/
+
+.footer{
+    grid-area: 3 / 1 / 3 / 4;
+    text-align: center;
+    font-size: 16px;
+}
+.footer>p{
+    font-size: 24px;
+}
