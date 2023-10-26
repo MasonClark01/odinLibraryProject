@@ -4,10 +4,27 @@
 body{
     height: 100vh;
     width: 100vw;
+}
+.bodyContainer{
     display: grid;
     grid-template: 1fr 5fr 1fr / 1fr 1fr 1fr;
+    height: 100%;
+    width: 100%;
 }
-
+#overlay{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    align-self: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    background-color: rgba(129, 129, 129, 0.414);
+}
 
 /*HEADER HEADER HEADER HEADER HEADER*/
 
@@ -30,8 +47,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
-.newBook{
+#newBook{
     height: 32px;
     padding: 5px 20px;
     border-radius: 25px;
@@ -39,8 +57,30 @@ body{
 .newBookDiv{
     height: 20%;
 }
-.books{
+#books{
     height: 80%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-around;
+    overflow: scroll;
+    background-color: rgba(165, 255, 174, 0.805);
+}
+.book{
+    height: 120px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: solid 2px rgb(0, 0, 0);
+}
+.newBookForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 400px;
 }
 
 
