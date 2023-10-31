@@ -72,18 +72,21 @@ function newBook(){
     pages.placeholder = "Pages"
 
     const readDiv = document.createElement("div")
+    readDiv.classList.add("formButton")
     const readLabel = document.createElement("label")
     readLabel.innerText = "Read?"
     readDiv.appendChild(readLabel)
     readDiv.appendChild(read)
 
     const submitDiv = document.createElement("div")
+    submitDiv.classList.add("formButton")
     const submitLabel = document.createElement("label")
     submitLabel.innerText = "Submit:"
     submitDiv.appendChild(submitLabel)
     submitDiv.appendChild(submit)
 
     const exitDiv = document.createElement("div")
+    exitDiv.classList.add("formButton")
     const exitLabel = document.createElement("label")
     exitLabel.innerText = "Exit:"
     exitDiv.appendChild(exitLabel)
@@ -117,15 +120,23 @@ function createBook(name, author, pageCount, status, bIndexValue){
     overlay.style.display = "none"
 }
 function toggleReadStatus(){
-    if(this.innerText === "Read"){
-        this.innerText = "Not Read"
-        this.style.backgroundColor = "rgba(255, 65, 65, 0.7)"
-    }
-    else{
-        this.innerText = "Read"
-        this.style.backgroundColor = "rgba(65, 255, 65, 0.7)"
+    const fetchBookNum = this.parentNode.classList.item(1)
+    const bookNum = fetchBookNum.split("_")
+    const bookStatusToChange = bookNum[1]
+    for(i in usersLibrary){
+        if(usersLibrary[i].bIndexValue === bookStatusToChange){
+            if(usersLibrary[i].read === true){
+                usersLibrary[i].read = false
+                displayBooks()
+            }
+            else{
+                usersLibrary[i].read = true
+                displayBooks()
+            }
+        }
     }
 }
+
 function exitOverlay(){
     overlay.innerHTML = ""
     overlay.style.display = "none"

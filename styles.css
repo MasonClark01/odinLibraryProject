@@ -58,6 +58,7 @@ body{
 #newBook:hover{
     background-color: rgba(165, 255, 174, 0.805);
     transition: .25s;
+    cursor: pointer;
 }
 .newBookDiv{
     height: 20%;
@@ -72,9 +73,10 @@ body{
     background-color: rgba(165, 255, 174, 0.805);
 }
 .book{
-    height: 120px;
-    width: 120px;
+    height: 140px;
+    width: 140px;
     display: flex;
+    gap: 4px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -84,10 +86,32 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 4px;
     width: 200px;
     height: 400px;
 }
-
+.formButton{
+    display: flex;
+    gap: 4px;
+}
+.formButton>input{
+    width: 20px;
+    height: 20px;
+}
+.book>button{
+    border-radius: 20px;
+    width: 60%;
+    outline: none;
+    cursor: pointer;
+    transition: .25s;
+}
+.book>button:hover{
+    cursor: pointer;
+    lighting-color: blue;
+    width: 75%;
+    transition: .25s;
+}
 
 /*FOOTER FOOTER FOOTER FOOTER FOOTER*/
 
