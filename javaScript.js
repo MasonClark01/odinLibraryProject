@@ -3,22 +3,27 @@ const bookshelfDiv = document.getElementById("books")
 const addBook = document.getElementById("newBook")
 const overlay = document.querySelector("#overlay")
 
-function book(title, author, pages, read){
+function book(title, author, pages, read, bIndexValue){
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
+    this.bIndexValue = bIndexValue
 }
 function displayBooks(){
     bookshelfDiv.innerHTML = ""
-    console.log("firing!")
     for(b in usersLibrary){
+        usersLibrary[b].bIndexValue = b
         const bCard = document.createElement("div")
+        bCard.classList.remove.item
         bCard.classList.add("book")
+        bCard.classList.add(`bookNum_${usersLibrary[b].bIndexValue}`)
         const bTitle = document.createElement("p")
         const bAuthor = document.createElement("p")
         const bPages = document.createElement("p")
         const bRead = document.createElement("button")
+        const bDelete = document.createElement("button")
+        bDelete.innerText = "Delete"
 
         bTitle.innerText = usersLibrary[b].title
         bAuthor.innerText = usersLibrary[b].author
@@ -31,14 +36,17 @@ function displayBooks(){
             bRead.innerText = "Not Read"
             bRead.style.backgroundColor = "rgba(255, 65, 65, 0.7)"
         }
+        bDelete.addEventListener("click", deleteBook)
         bRead.addEventListener("click", toggleReadStatus)
         bCard.appendChild(bTitle)
         bCard.appendChild(bAuthor)
         bCard.appendChild(bPages)
         bCard.appendChild(bRead)
+        bCard.appendChild(bDelete)
         bookshelfDiv.appendChild(bCard)
     }
 }
+
 function newBook(){
     // Setting up form input fields
     const newB = document.createElement("form")
@@ -50,8 +58,11 @@ function newBook(){
     const exit = document.createElement("input")
     //Setting input types
     newName.type = "text"
+    newName.required = true
     newAuthor.type = "text"
+    newAuthor.required = true
     pages.type = "text"
+    pages.pattern = "\d*"
     read.type = "checkbox"
     submit.type = "button"
     exit.type = "button"
@@ -93,10 +104,11 @@ function newBook(){
     //Creating book card for html
 
     newB.classList.add("newBookForm")
-    submit.addEventListener("click", (e) => createBook(newName.value, newAuthor.value, pages.value, read.checked))
+    submit.addEventListener("click", (e) => createBook(newName.value, newAuthor.value, pages.value, read.checked, usersLibrary.length))
+    exit.addEventListener("click", (e) => exitOverlay())
 }
-function createBook(name, author, pageCount, status){
-    const newBookCard = new book(name, author, pageCount, status)
+function createBook(name, author, pageCount, status, bIndexValue){
+    const newBookCard = new book(name, author, pageCount, status, bIndexValue)
     console.log(newBookCard)
     usersLibrary.push(newBookCard)
     displayBooks()
@@ -114,4 +126,21 @@ function toggleReadStatus(){
         this.style.backgroundColor = "rgba(65, 255, 65, 0.7)"
     }
 }
+function exitOverlay(){
+    overlay.innerHTML = ""
+    overlay.style.display = "none"
+}
+
+function deleteBook(){
+    const fetchBookNum = this.parentNode.classList.item(1)
+    const bookNumToDelete = fetchBookNum.split("_")
+    const bookToDelete = bookNumToDelete[1]
+    for(i in usersLibrary){
+        if(usersLibrary[i].bIndexValue === bookToDelete){
+            usersLibrary.splice(bookToDelete, 1)
+            displayBooks()
+        }
+    }
+}
+
 addBook.addEventListener("click", newBook)

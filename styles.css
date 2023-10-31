@@ -53,6 +53,11 @@ body{
     height: 32px;
     padding: 5px 20px;
     border-radius: 25px;
+    transition: .25s;
+}
+#newBook:hover{
+    background-color: rgba(165, 255, 174, 0.805);
+    transition: .25s;
 }
 .newBookDiv{
     height: 20%;
@@ -61,8 +66,8 @@ body{
     height: 80%;
     width: 100%;
     display: grid;
+    place-items: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    justify-content: space-around;
     overflow: scroll;
     background-color: rgba(165, 255, 174, 0.805);
 }
