@@ -27,7 +27,7 @@ function displayBooks(){
 
         bTitle.innerText = usersLibrary[b].title
         bAuthor.innerText = usersLibrary[b].author
-        bPages.innerText = usersLibrary[b].pages
+        bPages.innerText = `${usersLibrary[b].pages} Pages`
         if(usersLibrary[b].read === true){
             bRead.innerText = "Read"
             bRead.style.backgroundColor = "rgba(65, 255, 65, 0.7)"

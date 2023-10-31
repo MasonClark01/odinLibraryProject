@@ -4,6 +4,7 @@
 body{
     height: 100vh;
     width: 100vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .bodyContainer{
     display: grid;
@@ -122,4 +123,14 @@ body{
 }
 .footer>p{
     font-size: 24px;
+}
+.footer>p>a{
+    text-decoration: none;
+    color: rgba(0, 128, 13, 0.805);
+    transition: .25s;
+}
+.footer>p>a:hover{
+    color: rgba(21, 255, 45, 0.805);
+    font-size: 30px;
+    transition: .25s;
 }
